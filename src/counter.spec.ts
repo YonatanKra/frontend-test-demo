@@ -49,5 +49,13 @@ describe('counter', () => {
             unsetCounter(element);
             expect(element.textContent).toBe('');
         });
+
+        it('should stop click from settin the text', function () {
+            const element = document.createElement('button');
+            setupCounter(element);
+            unsetCounter(element);
+            element.click();
+            expect(element.textContent).toBe('');
+        });
     });
 });
