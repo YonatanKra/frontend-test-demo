@@ -38,5 +38,9 @@ describe('counter', () => {
             const nonButtonElement = document.createElement('div') as HTMLButtonElement;
             expect(() => unsetCounter(nonButtonElement)).toThrowError('Element must of of HTMLButtonElement type');
         });
+        it('should throw if there is no counter text', function () {
+            const element = document.createElement('button');
+            expect(() => unsetCounter(element)).toThrowError('Counter text not found. Assuming element is not a counter.');
+        });
     });
 });
