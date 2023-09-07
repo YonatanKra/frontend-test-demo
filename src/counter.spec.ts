@@ -42,5 +42,12 @@ describe('counter', () => {
             const element = document.createElement('button');
             expect(() => unsetCounter(element)).toThrowError('Counter text not found. Assuming element is not a counter.');
         });
+
+        it('should remove counter text', function () {
+            const element = document.createElement('button');
+            setupCounter(element);
+            unsetCounter(element);
+            expect(element.textContent).toBe('');
+        });
     });
 });

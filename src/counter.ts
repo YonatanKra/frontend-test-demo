@@ -4,6 +4,8 @@ export function unsetCounter(element?: HTMLButtonElement) {
     if(element.innerText.indexOf('Count is') === -1) {
         throw new Error('Counter text not found. Assuming element is not a counter.');
     }
+
+    element.innerText = '';
 }
 
 function validateElement(element: HTMLButtonElement | undefined) {
