@@ -33,5 +33,10 @@ describe('counter', () => {
         it('should throw an error if not given an element', function () {
             expect(() => unsetCounter()).toThrowError('No element was provided');
         });
+
+        it('should throw an error if not given a button element', function () {
+            const nonButtonElement = document.createElement('div') as HTMLButtonElement;
+            expect(() => unsetCounter(nonButtonElement)).toThrowError('Element must of of HTMLButtonElement type');
+        });
     });
 });
