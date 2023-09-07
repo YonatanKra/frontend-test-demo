@@ -1,4 +1,4 @@
-import { setupCounter } from "./counter";
+import { setupCounter, unsetCounter } from "./counter";
 
 
 describe('counter', () => {
@@ -26,6 +26,12 @@ describe('counter', () => {
             setupCounter(element);
             element.click();
             expect(element.textContent).toBe('Count is 1');
+        });
+    });
+
+    describe('unsetCounter', function () {
+        it('should throw an error if not given an element', function () {
+            expect(() => unsetCounter()).toThrowError('No element was provided');
         });
     });
 });

@@ -1,3 +1,7 @@
+export function unsetCounter() {
+    throw new Error('No element was provided');
+}
+
 export function setupCounter(element?: HTMLButtonElement) {
     if (!element) {
         throw new Error('No element was provided');
@@ -12,3 +16,4 @@ export function setupCounter(element?: HTMLButtonElement) {
         element.innerText = `Count is ${parseInt(element.innerText.split(' ')[2]) + 1}`;
     });
 }
+
