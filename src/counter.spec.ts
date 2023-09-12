@@ -1,6 +1,5 @@
 import { setupCounter, unsetCounter } from "./counter";
 
-
 describe('counter', () => {
     describe('setupCounter', function () {
         it('should be defined', function () {
@@ -21,11 +20,23 @@ describe('counter', () => {
             setupCounter(element);
             expect(element.textContent).toBe('Count is 0');
         });
+
         it('should raise the counter when clicked', function () {
             const element = document.createElement('button');
             setupCounter(element);
+            setupCounter(element);
+            setupCounter(element);
             element.click();
             expect(element.textContent).toBe('Count is 1');
+        });
+
+        it('should set only one event listener', function () {
+            const element = document.createElement('button');
+            vi.spyOn(element, 'addEventListener');
+            setupCounter(element);
+            setupCounter(element);
+            setupCounter(element);
+            expect(element.addEventListener).toHaveBeenCalledTimes(1);
         });
     });
 

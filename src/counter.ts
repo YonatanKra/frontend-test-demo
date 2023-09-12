@@ -10,6 +10,11 @@ export function unsetCounter(element?: HTMLButtonElement) {
     element?.removeEventListener('click', setupCounterText);
 }
 
+function setupCounterText(e: MouseEvent) {
+    const element = e.target;
+    element.innerText = `Count is ${parseInt(element.innerText.split(' ')[2]) + 1}`;
+}
+
 function validateElement(element: HTMLButtonElement | undefined) {
     if (!element) {
         throw new Error('No element was provided');
@@ -19,14 +24,12 @@ function validateElement(element: HTMLButtonElement | undefined) {
     }
 }
 
-function setupCounterText(e: MouseEvent) {
-    const element = e.target;
-    element.innerText = `Count is ${parseInt(element.innerText.split(' ')[2]) + 1}`;
-}
 export function setupCounter(element?: HTMLButtonElement) {
     validateElement(element);
+    let newElement = element.innerText.indexOf('Count is') === -1;
 
     element.innerText = 'Count is 0';
-    element.addEventListener('click', setupCounterText);
+    
+    newElement && element.addEventListener('click', setupCounterText);
 }
 
